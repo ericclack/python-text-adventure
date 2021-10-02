@@ -54,7 +54,7 @@ You can see from the code above that you can change variables. This is handy, la
 Writing the program
 -------------------
 
-Let's move over onto the right hand side and put our code into a program file. This means we can run it again later and share it with others.
+Let's move over onto the left hand side and put our code into a program file. This means we can run it again later and share it with others.
 
 .. code:: python
 
@@ -109,7 +109,97 @@ Did you notice that the first letter is numbered zero? This is the case in most 
 Adding more rooms
 -----------------
 
-So now we can check the `go` variable and send the player to the right place. We'll do this with an if-statment:
+So now we can check the `go` variable and send the player to the right place. We'll do this with an if-statment. Add the code to the end of your program:
+
+.. code:: python
+
+   if go == 'L':
+      print("You have chosen the left tunnel")
+   if go == 'R':
+      print("You have chosen the right tunnel")
+
+
+This works OK but there are some bugs. Try answering the question with something other than L or R and the program just ends. Of if you enter nothing (just press return) and you'll see an error:
+
+.. code:: python
+
+   IndexError: string index out of range
+
+Let's fix these bugs now.
+
+A better way to ask for directions
+----------------------------------
+
+We can make a function to ask which direction the player wants to go in and in this function perform all the checks we need. This makes sense because we'll be asking the player often and we don't want to repeat ourselves. 
+
+To make a function we use the :code:`def` keyword, like this, add this code to the *start* of you program:
+
+.. code:: python
+
+   def which_direction():
+     go = input("Which way do you want to go, left or right? ")
+     go = go[0].upper()
+     return go
+
+
+We use :code:`return` to send back the value to the code that uses this function. So we can update our program so that it now looks like this, with new code in yellow:
+
+.. code-block:: python
+   :emphasize-lines: 10
+
+   def which_direction():
+     go = input("Which way do you want to go, left or right? ")
+     go = go[0].upper()
+     return go
+
+     
+   player = input("What's your name explorer? ")	  
+   print("Welcome to the caves of Xandos,", player)
+
+   print()
+   print("You are standing in the entrance to a huge cave network.")
+   print("You can see a torch on the ground, and can see two tunnels")
+   print("one on the left, one on the right")
+
+   go = which_direction()
+    if go == 'L':
+      print("You have chosen the left tunnel")
+   if go == 'R':
+      print("You have chosen the right tunnel")
+
+At the moment, this is the same behaviour as before with the same bugs. 
+
+Let's think about the behaviour we want:
+
+- Only accept L and R
+- If the user enters something else, ask again
+
+OK, so update your function as follows:
+
+.. code-block:: python
+   :emphasize-lines: 3, 5, 7-10
+      
+   def which_direction():
+
+     while True:
+       go = input("Which way do you want to go, left or right? ")
+       if go == "": continue
+       go = go[0].upper()
+       if go in ['L', 'R']:
+	 return go
+       else:
+	 print("I don't understand")
+
+What do those new lines mean?
+
+- :code:`while True` means keep repeating until we leave with :code:`return`
+- :code:`if go == "": continue` means that we try again if the player didn't enter anything
+- :code:`if go in ['L', 'R']` checks to see if the user entered an `L` or an `R`.
+
+Test the new code out, you should see that we now have a robust way to ask for a direction from the player.
+
+Adding more rooms
+-----------------
 
 
    
