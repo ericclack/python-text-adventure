@@ -214,6 +214,8 @@ So how do we link these up to our existing code?
 
 We change the code after each `if` statement, so where from before you have:
 
+.. code:: python
+	  
    if go == 'L':
       print("You have chosen the left tunnel")
    if go == 'R':
