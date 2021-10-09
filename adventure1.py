@@ -31,15 +31,14 @@ def which_direction():
 def left_tunnel():
   print()
   print("You are in the left tunnel, it is quite dark")
-  print("You see a hole leading to a space below, and above you can see a way to climb up into another tunnel.")
+  print("You see a hole on the left leading to a space below, and to the right you can see a way to climb up into another tunnel.")
 
-  go = input("Which way do you want to go, up or down? ")
-  go = go[0].upper()
+  go = which_direction()
 
-  if go == 'U':
-    up_tunnel()
-  if go == 'D':
-    down_tunnel()
+  if go == 'L':
+    left_up_tunnel()
+  if go == 'R':
+    right_down_tunnel()
 
     
 def right_tunnel():
@@ -47,11 +46,11 @@ def right_tunnel():
   print("You are in the right tunnel, it is a dead end.")
 
   
-def up_tunnel():
+def left_up_tunnel():
   print("Climing up, you slip on a rock...")
 
   
-def down_tunnel():
+def right_down_tunnel():
   print("It is a lot deeper than it looks...")
 
 

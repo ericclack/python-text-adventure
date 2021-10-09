@@ -106,9 +106,6 @@ Add this line under the `input` statement:
 
 Did you notice that the first letter is numbered zero? This is the case in most programming languages, counting in lists starts at zero.
 
-Adding more rooms
------------------
-
 So now we can check the `go` variable and send the player to the right place. We'll do this with an if-statment. Add the code to the end of your program:
 
 .. code:: python
@@ -132,7 +129,7 @@ A better way to ask for directions
 
 We can make a function to ask which direction the player wants to go in and in this function perform all the checks we need. This makes sense because we'll be asking the player often and we don't want to repeat ourselves. 
 
-To make a function we use the :code:`def` keyword, like this, add this code to the *start* of you program:
+To make a function we use the :code:`def` keyword, like this, add this code to the *start* of your program:
 
 .. code:: python
 
@@ -145,7 +142,7 @@ To make a function we use the :code:`def` keyword, like this, add this code to t
 We use :code:`return` to send back the value to the code that uses this function. So we can update our program so that it now looks like this, with new code in yellow:
 
 .. code-block:: python
-   :emphasize-lines: 10
+   :emphasize-lines: 1-4,15
 
    def which_direction():
      go = input("Which way do you want to go, left or right? ")
@@ -162,7 +159,7 @@ We use :code:`return` to send back the value to the code that uses this function
    print("one on the left, one on the right")
 
    go = which_direction()
-    if go == 'L':
+   if go == 'L':
       print("You have chosen the left tunnel")
    if go == 'R':
       print("You have chosen the right tunnel")
@@ -201,6 +198,36 @@ Test the new code out, you should see that we now have a robust way to ask for a
 Adding more rooms
 -----------------
 
+Let's add rooms for the left and right tunnels. From now on, every room will be a new function, and they'll all look pretty similar in structure. Add these two functions to the start of your program:
 
+.. code:: python
+
+   def left_tunnel():
+     print()
+     print("You are in the left tunnel, it is quite dark")
+
+   def right_tunnel():
+     print()
+     print("You are in the right tunnel, it is a dead end.")
+
+So how do we link these up to our existing code?
+
+We change the code after each `if` statement, so where from before you have:
+
+   if go == 'L':
+      print("You have chosen the left tunnel")
+   if go == 'R':
+      print("You have chosen the right tunnel")
+
+Change it to: 
+
+.. code:: python
+	  
+   if go == 'L':
+      left_tunnel()
+   if go == 'R':
+      right_tunnel()
+
+The next step is to add more descriptions to those places and ask the player which direction they want to go in. Read on to :ref:`Part2`.
    
 .. _replit: https://replit.com/
