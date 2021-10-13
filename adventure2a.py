@@ -1,10 +1,11 @@
-def which_direction():
+def which_direction(choices):
 
   while True:
-    go = input("Which way do you want to go, left or right? ")
+    c = ", ".join(choices)
+    go = input("Which way do you want to go: " + c + "? ")
     if go == "": continue
     go = go[0].upper()
-    if go in ['L', 'R']:
+    if go in choices:
       return go
     else:
       print("I don't understand")
@@ -28,12 +29,11 @@ print("Welcome to the caves of Xandos,", player)
 print()
 print("You are standing in the entrance to a huge cave network.")
 print("You can see a torch on the ground, and can see two tunnels")
-print("One on the left, one on the right")
+print("One heading East, one heading West.")
 
-go = which_direction()
+go = which_direction(['E', 'W'])
 
-if go == 'L':
+if go == 'E':
   room2()
-if go == 'R':
+if go == 'W':
   room3()
-

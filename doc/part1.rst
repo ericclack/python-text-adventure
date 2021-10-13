@@ -18,7 +18,7 @@ Let's start in the REPL on the right hand side. Type in the following:
 
 You should see that text printed on the screen. Pretty easy right?
 
-**Don't be tempted to copy and paste the code from this tutorial!** Typing it in can be slow at first, if you are new to typing, but it will help you understand and remember the code much better than copy will do. 
+**Don't be tempted to copy and paste the code from this tutorial!** Typing it in can be slow at first, if you are new to typing, but it will help you understand and remember the code much better than copying will do. 
 
 Now try this:
 
@@ -202,13 +202,14 @@ Let's add rooms for the left and right tunnels. From now on, every room will be 
 
 .. code:: python
 
-   def left_tunnel():
+   def room2():
      print()
-     print("You are in the left tunnel, it is quite dark")
+     print("You crawl through into a small space, it is quite dark")
 
-   def right_tunnel():
+   def room3():
      print()
-     print("You are in the right tunnel, it is a dead end.")
+       print("You crawl through the tunnel and stumble, you see")
+       print("immediately below you a huge hole and fall to your death!")
 
 So how do we link these up to our existing code?
 
@@ -226,10 +227,10 @@ Change it to:
 .. code:: python
 	  
    if go == 'L':
-      left_tunnel()
+      room2()
    if go == 'R':
-      right_tunnel()
+      room3()
 
-The next step is to add more descriptions to those places and ask the player which direction they want to go in. Read on to :ref:`Part2`.
+In the next part we'll have a think about the game world and add many more rooms. Read on to :ref:`Part2`.
    
 .. _replit: https://replit.com/
