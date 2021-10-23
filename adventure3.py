@@ -1,14 +1,27 @@
-def which_direction(choices):
+def what_to_do(directions, pickups=[]):
 
   while True:
-    c = ", ".join(choices)
-    go = input("Which way do you want to go: " + c + "? ")
-    if go == "": continue
-    go = go[0].upper()
-    if go in choices:
-      return go
-    else:
-      print("I don't understand")
+    print("What do you want to do?")
+    if pickups: print("  Take ", pickups)
+    print("  Go ", directions)
+    w = input("> ")
+    if w == "": continue
+
+    (verb, noun) = w.split(" ")
+    verb = verb.lower()
+    
+    if verb == "take":
+      if noun in pickups:
+        print("TODO: take the", noun)
+      else:
+        print("There isn't a", noun, "to take")
+        
+    elif verb == "go":
+      go = noun[0].upper()
+      if go in directions:
+        return go
+      else:
+        print("I don't understand how to go that way")
 
       
 def welcome():
@@ -22,7 +35,7 @@ def entrance():
   print("You can see a torch on the ground, and can see two tunnels")
   print("One to the North, one on the South")
 
-  go = which_direction(['N', 'S'])
+  go = what_to_do(['N', 'S'], ['torch'])
 
   if go == 'N':
     room2()
@@ -35,7 +48,7 @@ def room2():
   print("You crawl through into a small space, it is quite dark")
   print("You can just make out a hole to the east leading to a space below, and to the south you can see a tunnel.")
 
-  go = which_direction(['E', 'S'])
+  go = what_to_do(['E', 'S'])
 
   if go == 'E':
     room5()
@@ -51,7 +64,7 @@ def room3_death():
 def room5():
   print("Climing up...")
 
-  go = which_direction()
+  go = what_to_do()
 
   
 welcome()

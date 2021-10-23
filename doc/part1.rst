@@ -129,7 +129,7 @@ A better way to ask for directions
 
 We can make a function to ask which direction the player wants to go in and in this function perform all the checks we need. This makes sense because we'll be asking the player often and we don't want to repeat ourselves. 
 
-To make a function we use the :code:`def` keyword, like this, add this code to the *start* of your program:
+To make a function we use the :code:`def` keyword, like you see below. So add this code to the *start* of your program:
 
 .. code:: python
 
@@ -138,8 +138,9 @@ To make a function we use the :code:`def` keyword, like this, add this code to t
      go = go[0].upper()
      return go
 
+Did you notice that the second, third and fourth lines have two spaces at the start of the line? This means the lines are *indented*, it is how we tell Python that these lines are *inside* the function.
 
-We use :code:`return` to send back the value to the code that uses this function. So we can update our program so that it now looks like this, with new code in yellow:
+On the last line of the function we use :code:`return` to send back the value to the code that called this function. So we can update our program so that it now looks like this, with new code in yellow:
 
 .. code-block:: python
    :emphasize-lines: 1-4,15
@@ -171,7 +172,7 @@ Let's think about the behaviour we want:
 - Only accept L and R
 - If the user enters something else, ask again
 
-OK, so update your function as follows:
+OK, so update your function as follows to fix these bugs:
 
 .. code-block:: python
    :emphasize-lines: 3, 5, 7-10

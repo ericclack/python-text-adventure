@@ -25,7 +25,9 @@ Example: if you are standing in room 1 having come from the entrance then left w
 
 How do we fix this? By using North, South, East, West. 
 
-So let's update our `which_direction` function. But wait, looking at the map the directions will depend upon where we are, so we need to be able to tell the function which directions are possible each time we call it. 
+So let's update our `which_direction` function. But wait, looking at the map the directions will depend upon where we are, so we need to be able to tell the function which directions are possible each time we call it.
+
+Here's what we need to change: 
 
 .. code-block:: python
    :emphasize-lines: 1,4,5,8
@@ -47,7 +49,7 @@ So what did we change?
 1. The function now takes a single `argument` called `choices`. This is a list of possible directions that the player can choose from.
 2. We turn that list into a comma-separated string
 3. We present this to the player and ask them to make their choice
-4. We check what they type in matches one of the choices with `if go in choices`
+4. We check what they type in matches one of the choices with :code:`if go in choices`
 
 If you run your program now you'll get an error like this: 
 
@@ -107,7 +109,7 @@ Build the world
 
 Now we have a lot of what we need to add our different rooms or locations to the game.
 
-For each location you need to create a template that looks like this:
+For each location you need to create a function that looks like this:
 
 .. code:: python
 
@@ -128,9 +130,51 @@ For each location you need to create a template that looks like this:
 
 This is where it helps to be organised and draw a good map with labels for each room, so you can find the code that corresponds to each one.
 
-Picking things up
------------------
+Every room is a function
+------------------------
 
-Do you remember we said back in :ref:`Part1` that there was a torch in the first room? Let's make it possible for the player to pick this up.
+If you look carefully at the code at the end of your program you'll notice that the welcome messages and entrance descriptions are not inside any function, they don't have any spaces at the start of their lines.
 
-[coming soon]
+This means it won't be possible to move back into the entrance when playing the game. It is also a bit untidy and inconsistent, and all good programmers like things to be tidy and consistent!
+
+So let's fix it. There are two things going on at the end of your code:
+
+ 1. The welcome message
+ 2. The entrance room
+
+So let's create two functions like so -- replace the code with the following: 
+
+.. code:: python
+
+   def welcome():
+     player = input("What's your name explorer? ")	  
+     print("Welcome to the caves of Xandos,", player)   
+
+   def entrance():
+     print()
+     print("You are standing in the entrance to a huge cave network.")
+     print("You can see a torch on the ground, and can see two tunnels")
+     print("One heading East, one heading West.")
+
+     go = which_direction(['E', 'W'])
+
+     if go == 'E':
+       room2()
+     if go == 'W':
+       room3()   
+
+And don't forget to call these two functions, add these two lines right at the end of your program:
+
+.. code:: python
+
+   welcome()
+   entrance()
+	  
+
+
+Next up
+-------
+
+In the next part we'll add code so that the player can pick things up and use them. Read on to :ref:`Part3`.
+
+
