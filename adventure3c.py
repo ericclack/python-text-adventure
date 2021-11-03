@@ -6,9 +6,20 @@ def player_action(directions, objects):
     c = input("What do you want to do? ")
     try:
       (verb, noun) = c.lower().split(" ")
-      return verb, noun
     except ValueError:
       print("I don't understand")
+      continue
+
+    if verb == "go":
+      if noun[0] in directions: break
+      else: print("You can't go in direction", noun)
+    elif verb == "take":
+      if noun in objects: break
+      else: print("There is no", noun, "to take")
+    else:
+      print("I only understand two commands: go, take")
+      
+  return verb, noun
 
 
 def welcome():

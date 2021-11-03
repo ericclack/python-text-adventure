@@ -1,29 +1,11 @@
-def what_to_do(directions, pickups=[]):
+# TO DO: add functions to check for directions or actions
 
-  while True:
-    print("What do you want to do?")
-    if pickups: print("  Take ", pickups)
-    print("  Go ", directions)
-    w = input("> ")
-    if w == "": continue
+def player_action(directions, objects):
+  c = input("What do you want to do? ")
+  (verb, noun) = c.lower().split(" ")
+  return verb, noun
 
-    (verb, noun) = w.split(" ")
-    verb = verb.lower()
-    
-    if verb == "take":
-      if noun in pickups:
-        print("TODO: take the", noun)
-      else:
-        print("There isn't a", noun, "to take")
-        
-    elif verb == "go":
-      go = noun[0].upper()
-      if go in directions:
-        return go
-      else:
-        print("I don't understand how to go that way")
 
-      
 def welcome():
   player = input("What's your name explorer? ")	  
   print("Welcome to the caves of Xandos,", player)
@@ -35,24 +17,28 @@ def entrance():
   print("You can see a torch on the ground, and can see two tunnels")
   print("One to the North, one on the South")
 
-  go = what_to_do(['N', 'S'], ['torch'])
+  (verb, noun) = player_action(['n', 's'], ['torch'])
 
-  if go == 'N':
-    room2()
-  if go == 'S':
-    room3_death()
-
+  if verb == "go":
+    if noun[0] == 'n':
+      room2()
+    if noun[0] == 's':
+      room3_death()
+        
+  if verb == "take":
+    if noun == "torch":
+      print("You take the torch")     
 
 def room2():
   print()
   print("You crawl through into a small space, it is quite dark")
   print("You can just make out a hole to the east leading to a space below, and to the south you can see a tunnel.")
 
-  go = what_to_do(['E', 'S'])
+  go = what_to_do(['e', 's'])
 
-  if go == 'E':
+  if go == 'e':
     room5()
-  if go == 'S':
+  if go == 's':
     entrance()
 
     

@@ -100,12 +100,105 @@ When you've done that, scroll down and see if your list matches ours...
 Bug list
 ........
 
-* If you enter nothing, you get an error: :code:`ValueError: not enough values to unpack (expected 2, got 1)`
-* If you enter too many words, e.g. take the apple, you get an error: :code:`ValueError: too many values to unpack (expected 2)`
-* You can use any verb, e.g. eat apple
-* You can ask to go in any direction, not just those available, e.g. go west
-* You can try taking things that don't exist: take apple
+1. If you enter nothing, you get an error: :code:`ValueError: not enough values to unpack (expected 2, got 1)`
+2. If you enter too many words, e.g. take the apple, you get an error: :code:`ValueError: too many values to unpack (expected 2)`
+3. You can use any verb, e.g. eat apple
+4. You can ask to go in any direction, not just those available, e.g. go west
+5. You can try taking things that don't exist: take apple
 
 Let's fix these one at a time.
 
-In the first two, `ValueError` is Python's way of saying that when we try and split the player's input it won't match a verb and noun. 
+Not the right number of words
+.............................
+
+In the first two errors, `ValueError` is Python's way of saying that when we try and split the player's input it won't match our two variables: verb and noun. 
+
+We can catch this error and ask the player to try again. Let's change your `player_action` function to do this:
+
+.. code-block:: python
+   :emphasize-lines: 3,5,7,8,9
+      
+   def player_action(directions, objects):
+
+     while True:
+       c = input("What do you want to do? ")
+       try:
+	 (verb, noun) = c.lower().split(" ")
+	 break
+       except ValueError:
+	 print("I don't understand")
+
+     return verb, noun
+
+So, what does that all do?
+
+1. You'll have seen :code:`while True` before, it means keep trying until something works and we :code:`break` out of the loop.
+2. :code:`try` tells Python that if anything goes wrong, look for a matching :code:`except` for the error.
+3. And that's what we see on line 8: :code:`except ValueError`, if this happens we say we don't understand and round we go again.
+
+Only two commands
+.................
+
+OK, so the player should only be able to use two commands: `go` in a direction and `take` things. Let's fix this.
+
+Make the following changes to your function:
+
+.. code-block:: python
+   :emphasize-lines: 7,10,12-17
+
+   def player_action(directions, objects):
+
+     while True:
+       c = input("What do you want to do? ")
+       try:
+	 (verb, noun) = c.lower().split(" ")
+	 # no break here now
+       except ValueError:
+	 print("I don't understand")
+	 continue
+
+       if verb == "go":
+	 break
+       elif verb == "take":
+	 break
+       else:
+	 print("I only understand two commands: go, take")
+
+     return verb, noun
+
+We've swapped out the :code:`break` and added a :code:`continue`. Continue means go back to the start of the loop, which means the player is asked again for their command.
+
+We'll expand those if-statements in a tick to check for directions and things being taken.
+
+If you haven't tested your new code, go ahead and do this. You should find that errors 1,2 and 3 have been fixed.
+
+Checking the nouns
+..................
+
+Finally let's check the directions and objects to squash the last two bugs.
+
+Change your code like so:
+
+.. code-block:: python
+   :emphasize-lines: 12,13,15,16
+
+   def player_action(directions, objects):
+
+     while True:
+       c = input("What do you want to do? ")
+       try:
+	 (verb, noun) = c.lower().split(" ")
+       except ValueError:
+	 print("I don't understand")
+	 continue
+
+       if verb == "go":
+	 if noun[0] in directions: break
+	 else: print("You can't go in direction", noun)
+       elif verb == "take":
+	 if noun in objects: break
+	 else: print("There is no", noun, "to take")
+       else:
+	 print("I only understand two commands: go, take")
+
+     return verb, noun
