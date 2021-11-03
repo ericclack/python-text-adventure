@@ -3,8 +3,8 @@ def which_direction():
   while True:
     go = input("Which way do you want to go, left or right? ")
     if go == "": continue
-    go = go[0].upper()
-    if go in ['L', 'R']:
+    go = go[0].lower()
+    if go in ['l', 'r']:
       return go
     else:
       print("I don't understand")
@@ -32,8 +32,8 @@ print("One on the left, one on the right")
 
 go = which_direction()
 
-if go == 'L':
+if go == 'l':
   room2()
-if go == 'R':
+if go == 'r':
   room3()
 

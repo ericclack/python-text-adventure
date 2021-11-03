@@ -4,7 +4,7 @@ def which_direction(choices):
     c = ", ".join(choices)
     go = input("Which way do you want to go: " + c + "? ")
     if go == "": continue
-    go = go[0].upper()
+    go = go[0].lower()
     if go in choices:
       return go
     else:
@@ -22,11 +22,11 @@ def entrance():
   print("You can see a torch on the ground, and can see two tunnels")
   print("One to the North, one on the South")
 
-  go = which_direction(['N', 'S'])
+  go = which_direction(['n', 's'])
 
-  if go == 'N':
+  if go == 'n':
     room2()
-  if go == 'S':
+  if go == 's':
     room3_death()
 
 
@@ -35,11 +35,11 @@ def room2():
   print("You crawl through into a small space, it is quite dark")
   print("You can just make out a hole to the east leading to a space below, and to the south you can see a tunnel.")
 
-  go = which_direction(['E', 'S'])
+  go = which_direction(['e', 's'])
 
-  if go == 'E':
+  if go == 'e':
     room5()
-  if go == 'S':
+  if go == 's':
     entrance()
 
     

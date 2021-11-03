@@ -96,27 +96,27 @@ Now imagine all the things that other people could have typed, could be (assumin
    'letf'
    'l'
 
-That's a lot of possibilities and they all mean left. We want our program to cope with these and do the right thing, so an easy thing to do is take the first letter and uppercase it, then we should always have an 'L' if they want to go left and an 'R' if they want to go right.
+That's a lot of possibilities and they all mean left. We want our program to cope with these and do the right thing, so an easy thing to do is take the first letter and lowercase it, then we should always have an 'l' if they want to go left and an 'r' if they want to go right.
 
 Add this line under the `input` statement: 
 
 .. code:: python
 
-   go = go[0].upper()
+   go = go[0].lower()
 
 Did you notice that the first letter is numbered zero? This is the case in most programming languages, counting in lists starts at zero.
 
-So now we can check the `go` variable and send the player to the right place. We'll do this with an if-statment. Add the code to the end of your program:
+So now we can check the `go` variable and send the player to the right place. We'll do this with an if-statement. Add the code to the end of your program:
 
 .. code:: python
 
-   if go == 'L':
+   if go == 'l':
       print("You have chosen the left tunnel")
-   if go == 'R':
+   if go == 'r':
       print("You have chosen the right tunnel")
 
 
-This works OK but there are some bugs. Try answering the question with something other than L or R and the program just ends. Of if you enter nothing (just press return) and you'll see an error:
+This works OK but there are some bugs. Try answering the question with something other than 'l' or 'r' and the program just ends. Of if you enter nothing (just press return) and you'll see an error:
 
 .. code:: python
 
@@ -127,7 +127,9 @@ Let's fix these bugs now.
 A better way to ask for directions
 ----------------------------------
 
-We can make a function to ask which direction the player wants to go in and in this function perform all the checks we need. This makes sense because we'll be asking the player often and we don't want to repeat ourselves. 
+We can make a function. This is a way to package up a bit of code so that we can reuse it whereever we linke. 
+
+The function will ask which direction the player wants to go in and perform all the checks we need. This makes sense because we'll be asking the player often and we don't want to repeat ourselves. 
 
 To make a function we use the :code:`def` keyword, like you see below. So add this code to the *start* of your program:
 
@@ -135,19 +137,19 @@ To make a function we use the :code:`def` keyword, like you see below. So add th
 
    def which_direction():
      go = input("Which way do you want to go, left or right? ")
-     go = go[0].upper()
+     go = go[0].lower()
      return go
 
 Did you notice that the second, third and fourth lines have two spaces at the start of the line? This means the lines are *indented*, it is how we tell Python that these lines are *inside* the function.
 
-On the last line of the function we use :code:`return` to send back the value to the code that called this function. So we can update our program so that it now looks like this, with new code in yellow:
+On the last line of the function we use :code:`return` to send back the value to the code that called it. So we can update our program so that it now looks like this, with new code in yellow:
 
 .. code-block:: python
    :emphasize-lines: 1-4,15
 
    def which_direction():
      go = input("Which way do you want to go, left or right? ")
-     go = go[0].upper()
+     go = go[0].lower()
      return go
 
      
@@ -160,16 +162,16 @@ On the last line of the function we use :code:`return` to send back the value to
    print("one on the left, one on the right")
 
    go = which_direction()
-   if go == 'L':
+   if go == 'l':
       print("You have chosen the left tunnel")
-   if go == 'R':
+   if go == 'r':
       print("You have chosen the right tunnel")
 
 At the moment, this is the same behaviour as before with the same bugs. 
 
 Let's think about the behaviour we want:
 
-- Only accept L and R
+- Only accept l and r
 - If the user enters something else, ask again
 
 OK, so update your function as follows to fix these bugs:
@@ -182,8 +184,8 @@ OK, so update your function as follows to fix these bugs:
      while True:
        go = input("Which way do you want to go, left or right? ")
        if go == "": continue
-       go = go[0].upper()
-       if go in ['L', 'R']:
+       go = go[0].lower()
+       if go in ['l', 'r']:
 	 return go
        else:
 	 print("I don't understand")
@@ -192,7 +194,7 @@ What do those new lines mean?
 
 - :code:`while True` means keep repeating until we leave with :code:`return`
 - :code:`if go == "": continue` means that we try again if the player didn't enter anything
-- :code:`if go in ['L', 'R']` checks to see if the user entered an `L` or an `R`.
+- :code:`if go in ['l', 'r']` checks to see if the user entered an `l` or an `r`.
 
 Test the new code out, you should see that we now have a robust way to ask for a direction from the player.
 
@@ -218,18 +220,18 @@ We change the code after each `if` statement, so where from before you have:
 
 .. code:: python
 	  
-   if go == 'L':
+   if go == 'l':
       print("You have chosen the left tunnel")
-   if go == 'R':
+   if go == 'r':
       print("You have chosen the right tunnel")
 
 Change it to: 
 
 .. code:: python
 	  
-   if go == 'L':
+   if go == 'l':
       room2()
-   if go == 'R':
+   if go == 'r':
       room3()
 
 In the next part we'll have a think about the game world and add many more rooms. Read on to :ref:`Part2`.
