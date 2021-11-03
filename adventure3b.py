@@ -1,9 +1,25 @@
 # TO DO: add functions to check for directions or actions
 
 def player_action(directions, objects):
-  c = input("What do you want to do? ")
-  (verb, noun) = c.lower().split(" ")
-  return verb, noun
+  "Let the player interact with the room and return their next move"
+  
+  while True:
+    c = input("What do you want to do? ")
+    (noun, verb) = c.lower().split(" ")
+
+    if noun == "go":
+      if verb[0] in directions:
+        break
+      else: 
+        print("You can't go that way!")
+
+    elif noun == "take":
+      if verb in objects:
+        break
+      else: 
+        print("There isn't a", verb, "to take!")
+
+  return noun, verb
 
 
 def welcome():
@@ -17,28 +33,34 @@ def entrance():
   print("You can see a torch on the ground, and can see two tunnels")
   print("One to the North, one on the South")
 
-  (verb, noun) = player_action(['n', 's'], ['torch'])
+  """
+  What do you want to do?
+  > take torch
+  You take the torch, luckily for you it works!
+  
+  What do you want to do?
+  > go north
+  You go north...
+  """
 
-  if verb == "go":
-    if noun[0] == 'n':
-      room2()
-    if noun[0] == 's':
-      room3_death()
-        
-  if verb == "take":
-    if noun == "torch":
-      print("You take the torch")     
+  (noun, verb) = player_action(['n', 's'], ['torch'])
+  
+  if noun == "go" and verb[0] == 'n':
+    room2()
+  if noun == "go" and verb[0] == 's':
+    room3_death()
+
 
 def room2():
   print()
   print("You crawl through into a small space, it is quite dark")
   print("You can just make out a hole to the east leading to a space below, and to the south you can see a tunnel.")
 
-  go = what_to_do(['e', 's'])
+  go = what_to_do(['E', 'S'])
 
-  if go == 'e':
+  if go == 'E':
     room5()
-  if go == 's':
+  if go == 'S':
     entrance()
 
     

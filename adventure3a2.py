@@ -1,9 +1,14 @@
 # TO DO: add functions to check for directions or actions
 
 def player_action(directions, objects):
-  c = input("What do you want to do? ")
-  (verb, noun) = c.lower().split(" ")
-  return verb, noun
+
+  while True:
+    c = input("What do you want to do? ")
+    try:
+      (verb, noun) = c.lower().split(" ")
+      return verb, noun
+    except ValueError:
+      print("I don't understand")
 
 
 def welcome():
