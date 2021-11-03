@@ -4,7 +4,7 @@ def which_direction(choices):
     c = ", ".join(choices)
     go = input("Which way do you want to go: " + c + "? ")
     if go == "": continue
-    go = go[0].upper()
+    go = go[0].lower()
     if go in choices:
       return go
     else:
@@ -31,9 +31,9 @@ print("You are standing in the entrance to a huge cave network.")
 print("You can see a torch on the ground, and can see two tunnels")
 print("One heading East, one heading West.")
 
-go = which_direction(['E', 'W'])
+go = which_direction(['e', 'w'])
 
-if go == 'E':
+if go == 'e':
   room2()
-if go == 'W':
+if go == 'w':
   room3()

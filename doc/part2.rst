@@ -38,7 +38,7 @@ Here's what we need to change:
        c = ", ".join(choices)
        go = input("Which way do you want to go: " + c + "? ")
        if go == "": continue
-       go = go[0].upper()
+       go = go[0].lower()
        if go in choices:
 	 return go
        else:
@@ -59,7 +59,7 @@ If you run your program now you'll get an error like this:
 
 That's because you've been using `which_direction` without any arguments, because we didn't need them before -- it always asked the player: Left or Right?
 
-So go back into your code and change where you've used this function and add in some items from the list `['N', 'S', 'E', 'W']`, not forgetting the square brackets. 
+So go back into your code and change where you've used this function and add in some items from the list `['n', 's', 'e', 'w']`, not forgetting the square brackets. 
 
 Here's an example from part 1:
 
@@ -72,7 +72,7 @@ Here's an example from part 1:
        c = ", ".join(choices)
        go = input("Which way do you want to go: " + c + "? ")
        if go == "": continue
-       go = go[0].upper()
+       go = go[0].lower()
        if go in choices:
 	 return go
        else:
@@ -96,11 +96,11 @@ Here's an example from part 1:
    print("You can see a torch on the ground, and can see two tunnels")
    print("One heading East, one heading West.")
 
-   go = which_direction(['E', 'W'])
+   go = which_direction(['e', 'w'])
 
-   if go == 'E':
+   if go == 'e':
      room2()
-   if go == 'W':
+   if go == 'w':
      room3()
 
 
@@ -120,11 +120,11 @@ For each location you need to create a function that looks like this:
      print("Your explanation of which way the player can go")
 
      # Edit the list of letters depending on what's possible: 
-     go = which_direction(['N', "S', 'E', 'W'])
+     go = which_direction(['n', "s', 'e', 'w'])
 
-     if go == 'N':
+     if go == 'n':
        name_of_room()
-     if go == 'S':
+     if go == 's':
        name_of_room()
      #etc
 
@@ -156,11 +156,11 @@ So let's create two functions like so -- replace the code with the following:
      print("You can see a torch on the ground, and can see two tunnels")
      print("One heading East, one heading West.")
 
-     go = which_direction(['E', 'W'])
+     go = which_direction(['e', 'w'])
 
-     if go == 'E':
+     if go == 'e':
        room2()
-     if go == 'W':
+     if go == 'w':
        room3()   
 
 And don't forget to call these two functions, add these two lines right at the end of your program:
