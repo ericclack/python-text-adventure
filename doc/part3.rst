@@ -265,3 +265,8 @@ Do you see what lines we need to change? Here's an updated function with the new
 	 room5()
        if noun[0] == 's':
 	 entrance()
+
+Next up
+-------
+
+In the next part, coming soon, we'll allow our player to pick things up and use them in our world. 
