@@ -82,15 +82,42 @@ def room2():
 
     
 def room3_death():
-  print()
-  print("You crawl through the tunnel and stumble, you see immediately below you a huge hole and fall to your death!")
+  sprint()
+  sprint("You crawl through the tunnel and stumble,")
+  sprint("you see immediately below you a huge hole and fall to your death!")
 
   
 def room5():
-  print("Climing up...")
+  sprint("Climing up...")
 
-  go = what_to_do()
+  while True:
+    (verb, noun) = player_action(['n', 'e', 's', 'w'], [])
 
+    if verb == "go":
+      if noun[0] == 's':
+        room6()
+
+
+def room6():
+  sprint("You're in a small room with only one passage way, the one")
+  sprint("you just crawled through.")
+  if 'key' in room6.items:
+    sprint("You see a key in the dirt by your feet.")
+
+  while True:
+    (verb, noun) = player_action(['n'], room6.items)
+
+    if verb == "go":
+      if noun[0] == 'n':
+        room5()
+
+    if verb == "take":
+      if noun == "key":
+        print("You take the key")
+        player.items.append('key')
+        room6.items.remove('key')    
+        
+room6.items = ['key']
   
 welcome()
 entrance()
