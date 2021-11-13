@@ -19,7 +19,7 @@ So instead of just a direction let's ask the player for a command, so that they 
 Verbs and nouns
 ---------------
   
-Each command will be a *verb* followed by a *noun*. Let's explore in the REPL on the right side of your screen. Add these lines one at a time -- don't enter the lines that start with a hash (#).
+Each command will be a *verb* followed by a *noun*. Let's explore in the console on the right side of your screen. Add these lines one at a time -- don't enter the lines that start with a hash (#).
 
 .. code:: python
 
@@ -202,3 +202,66 @@ Change your code like so:
 	 print("I only understand two commands: go, take")
 
      return verb, noun
+
+Updating our room functions
+---------------------------
+
+Great, so now we have a function to discover the next player action, so we can update all of our room functions to use this.
+
+We've already changed the :code:`entrance` function, so we can use this as a guide for the other functions.
+
+Here's what `entrance` looks like now:
+
+.. code-block:: python
+
+   def entrance():
+     print()
+     print("You are standing in the entrance to a huge cave network.")
+     print("You can see a torch on the ground, and can see two tunnels")
+     print("One to the North, one on the South")
+
+     (verb, noun) = player_action(['n', 's'], ['torch'])
+
+     if verb == "go":
+       if noun[0] == 'n':
+	 room2()
+       if noun[0] == 's':
+	 room3_death()
+
+     if verb == "take":
+       if noun == "torch":
+         print("You take the torch")
+
+Ahd if we look at one of our other room functions we'll see something like this:
+
+.. code-block:: python
+
+   def room2():
+     print()
+     print("You crawl through into a small space, it is quite dark")
+     print("You can just make out a hole to the east leading to a space below, and to the south you can see a tunnel.")
+
+     go = what_to_do(['e', 's'])
+
+     if go == 'e':
+       room5()
+     if go == 's':
+       entrance()
+
+Do you see what lines we need to change? Here's an updated function with the new lines in yellow:
+
+.. code-block:: python
+   :emphasize-lines: 6,8,9,11,12
+
+   def room2():
+     print()
+     print("You crawl through into a small space, it is quite dark")
+     print("You can just make out a hole to the east leading to a space below, and to the south you can see a tunnel.")
+
+     (verb, noun) = player_action(['e', 's'], [])
+
+     if verb == "go":
+       if noun[0] == 'e':
+	 room5()
+       if noun[0] == 's':
+	 entrance()

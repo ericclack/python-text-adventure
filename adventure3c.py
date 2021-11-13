@@ -50,12 +50,13 @@ def room2():
   print("You crawl through into a small space, it is quite dark")
   print("You can just make out a hole to the east leading to a space below, and to the south you can see a tunnel.")
 
-  go = what_to_do(['e', 's'])
+  (verb, noun) = player_action(['e', 's'], [])
 
-  if go == 'e':
-    room5()
-  if go == 's':
-    entrance()
+  if verb == "go":
+    if noun[0] == 'e':
+      room5()
+    if noun[0] == 's':
+      entrance()
 
     
 def room3_death():
