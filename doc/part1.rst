@@ -3,14 +3,14 @@
 Part 1
 ======
 
-Getting Started in the REPL
----------------------------
+Trying things out in the console
+--------------------------------
 
-On the `Replit`_ website create a new Repl, choosing the Python template.
+On the `Replit`_ website create a new Repl, choosing the Python template, and giving it a good title.
 
-You'll see two panels: on the left is your code, and on the right the REPL, which is where you can try out ideas by typing code to see what happens.
+You'll see two panels: on the left is your code, and on the right the console, which is where you can try out ideas by typing code to see what happens.
 
-Let's start in the REPL on the right hand side. Type in the following:
+Let's start in the console on the right hand side. Type in the following:
 
 .. code:: python
 
@@ -37,7 +37,7 @@ Type these lines in one at a time:
    player = input("What's your name explorer? ")	  
    print("Welcome to the caves of Xandos,", player)
    
-Since we're in the REPL, we can test out any part of our code, so type these lines one at a time:
+Since we're in the console, we can test out any part of our code, so type these lines one at a time:
 
 .. code:: python
 
@@ -84,7 +84,7 @@ the player which way they want to go using `input`:
 Which way to go?
 ----------------
 
-From before you've seen that you can type things in the REPL, so do that now, type in: :code:`go` to see what's in the variable.
+From before you've seen that you can type things in the console, so do that now, type in: :code:`go` to see what's in the variable.
 
 Now imagine all the things that other people could have typed, could be (assuming they chose left):
 
