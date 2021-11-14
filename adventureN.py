@@ -4,8 +4,12 @@ class Player: pass
 player = Player()
 player.items = []
 
+class Room:
+  def __init__(self, items=[]):
+    self.items = items
+    
 
-def player_action(directions, objects):
+def player_action(directions, room):
 
   while True:
     c = input(f"What do you want to do {player.name}? ")
@@ -19,7 +23,7 @@ def player_action(directions, objects):
       if noun[0] in directions: break
       else: print(f"You can't go in direction {noun}")
     elif verb == "take":
-      if noun in objects: break
+      if noun in room.items: break
       else: print(f"There is no {noun} to take")
     else:
       print("I only understand two commands: go, take")
@@ -37,15 +41,17 @@ def welcome():
   print(f"Welcome to the caves of Xandos, {player.name}")
 
   
+entrance_room = Room(['torch'])
+
 def entrance():
   sprint()
   sprint("You are standing in the entrance to a huge cave network.")
-  if 'torch' in entrance.items: 
+  if 'torch' in entrance_room.items: 
     sprint("You can see a torch on the ground.")
   sprint("You can see two tunnels, one to the North, one on the South")
 
   while True: 
-    (verb, noun) = player_action(['n', 's'], entrance.items)
+    (verb, noun) = player_action(['n', 's'], entrance_room)
 
     if verb == "go":
       if noun[0] == 'n':
@@ -57,9 +63,7 @@ def entrance():
       if noun == "torch":
         print("You take the torch")
         player.items.append('torch')
-        entrance.items.remove('torch')
-
-entrance.items = ['torch']
+        entrance_room.items.remove('torch')
 
 
 def room2():
@@ -98,14 +102,16 @@ def room5():
         room6()
 
 
+room6_room = Room(['key'])
+
 def room6():
   sprint("You're in a small room with only one passage way, the one")
   sprint("you just crawled through.")
-  if 'key' in room6.items:
+  if 'key' in room6_room.items:
     sprint("You see a key in the dirt by your feet.")
 
   while True:
-    (verb, noun) = player_action(['n'], room6.items)
+    (verb, noun) = player_action(['n'], room6_room)
 
     if verb == "go":
       if noun[0] == 'n':
@@ -115,9 +121,8 @@ def room6():
       if noun == "key":
         print("You take the key")
         player.items.append('key')
-        room6.items.remove('key')    
+        room6_room.items.remove('key')    
+
         
-room6.items = ['key']
-  
 welcome()
 entrance()
