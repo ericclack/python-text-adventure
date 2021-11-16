@@ -66,6 +66,7 @@ def entrance():
         player.items.append('torch')
         entrance_room.items.remove('torch')
 
+        
 room2_room = Room(['e', 's'])
 
 def room2():

@@ -22,6 +22,7 @@ You'll be asked to choose a template, make sure you choose `Python`, then give y
 Now let's just do a simple test to see that everything is working.
 
 You'll see two sides to your browser screen:
+
 - On the left you have your program, with the filename `main.py` at the top, where you write code to run later
 - On the right you have a Console, where you can run Python code straight away.
 
@@ -47,7 +48,7 @@ On the left, in your `main.py` file, type the following:
 
 You'll see that nothing happens after typing in this code. That's because you need to press the green `Run` button -- go ahead and do it and see what happens.
 
-You might get an error, if so, check what you typed in, with what's above and try again. 
+You might get an error, if so, check what you typed in with what's above and try again. 
      
 
 Start the Tutorial

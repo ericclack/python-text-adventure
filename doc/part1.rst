@@ -6,7 +6,7 @@ Part 1
 Trying things out in the console
 --------------------------------
 
-On the `Replit`_ website create a new Repl, choosing the Python template, and giving it a good title.
+On the `Replit`_ website create a new Repl, choosing the Python template, and give it a good title.
 
 You'll see two panels: on the left is your code, and on the right the console, which is where you can try out ideas by typing code to see what happens.
 
@@ -127,7 +127,7 @@ Let's fix these bugs now.
 A better way to ask for directions
 ----------------------------------
 
-We can make a function. This is a way to package up a bit of code so that we can reuse it whereever we linke. 
+We can make a function: this is a way to package up a bit of code so that we can reuse it wherever we linke. 
 
 The function will ask which direction the player wants to go in and perform all the checks we need. This makes sense because we'll be asking the player often and we don't want to repeat ourselves. 
 

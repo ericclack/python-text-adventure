@@ -232,7 +232,7 @@ Here's what `entrance` looks like now:
        if noun == "torch":
          print("You take the torch")
 
-Ahd if we look at one of our other room functions we'll see something like this:
+And if we look at one of our other room functions we'll see something like this:
 
 .. code-block:: python
 

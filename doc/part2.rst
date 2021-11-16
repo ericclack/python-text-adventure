@@ -13,7 +13,7 @@ We need to do some planning now so that our world makes sense and we can see the
 .. image:: art/map1.png
 	   :width: 700
 
-You can see various icons: a skull and crossbones, a key and a keyhole. 
+You can see various items: a skull and crossbones, a key and a keyhole. 
 		   
 
 Left / Right or East / West?
