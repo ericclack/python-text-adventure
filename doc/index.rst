@@ -85,6 +85,8 @@ Indices and tables
 
 ----
 
+.. include:: <isonum.txt>
+
 Copyright |copy| 2021, Eric Clack
 
-Licensed under the Creative Commons Attribution-NonCommercial-ShareAlike v4.0
+Licensed under the Creative Commons Attribution-NonCommercial-ShareAlike licence v4.0
