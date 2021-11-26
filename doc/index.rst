@@ -81,3 +81,10 @@ Indices and tables
 * :ref:`search`
 
 .. _replit: https://replit.com/  
+
+
+----
+
+(c) Copyright 2021, Eric Clack
+
+Licensed under the Creative Commons Attribution-NonCommercial-ShareAlike v4.0
