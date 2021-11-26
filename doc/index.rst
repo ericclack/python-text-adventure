@@ -83,7 +83,7 @@ Indices and tables
 .. _replit: https://replit.com/  
 
 
-----
+---
 
 .. include:: <isonum.txt>
 
