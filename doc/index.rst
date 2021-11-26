@@ -85,6 +85,6 @@ Indices and tables
 
 ----
 
-(c) Copyright 2021, Eric Clack
+Copyright |copy| 2021, Eric Clack
 
 Licensed under the Creative Commons Attribution-NonCommercial-ShareAlike v4.0
