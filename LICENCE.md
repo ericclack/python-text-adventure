@@ -1,3 +1,5 @@
+(c) Copyright 2021, Eric Clack
+
 # Attribution-NonCommercial-ShareAlike
 
 https://creativecommons.org/licenses/by-nc-sa/4.0/
